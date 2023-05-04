@@ -22,5 +22,6 @@ Route::get('/', function () {
 Route::get('/home', [MainController::class, 'index']);
 Route::get('/presence/{subject:slug}', [MainController::class, 'show']);
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout']);

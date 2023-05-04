@@ -12,7 +12,7 @@
     
                 <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Appointment</label>
                 <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option v-for="n in 16" :value="n" :class="(n==5)? 'text-green-500': ''">{{ n }} {{ (n == 5) ? 'Already Filled!' : '' }}</option>
+                    <option v-for="n in 16" :value="n" :class="(presenceFilled.includes(n))? 'text-green-500': ''">{{ n }} {{ (presenceFilled.includes(n)) ? 'Already Filled!' : '' }}</option>
                 </select>
                 
                 <button class="text-white my-5 ms-auto w-full bg-sky-500 hover:bg-sky-600 p-2 rounded-lg">Submit</button>
@@ -30,7 +30,7 @@ export default {
 
 
 
-    props: ['subject']
+    props: ['subject', 'presenceFilled']
 };
 </script>
 
