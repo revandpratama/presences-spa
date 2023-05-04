@@ -20,6 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [MainController::class, 'index']);
+Route::post('/presence', [MainController::class, 'store']);
 Route::get('/presence/{subject:slug}', [MainController::class, 'show']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');

@@ -34,4 +34,32 @@ class MainController extends Controller
             'presenceFilled' => $presenceFilled,
         ]);
     }
+
+    public function store(Request $request) 
+    {
+
+        $validatedData = $request->validate([
+            'appointment' => 'required',
+            'user_id' => 'required',
+            'subject_id' => 'required',
+            'status' => 'required',
+        ]);
+
+
+
+        
+
+
+        // // $alreadyExists = Presence::where('user_id', $request->user_id)->where('subject_id', $request->subject_id)->exists();
+
+        if(Presence::where('user_id', $request->user_id)->where('subject_id', $request->subject_id)->where('appointment', $request->appointment)->exists()){
+
+            return redirect('/home')->with('presenceSuccess', 'Presence Already Filled!');
+        }
+        
+        Presence::create($validatedData);
+
+        return redirect('/home')->with('presenceSuccess', 'Presence Success!');
+        
+    }
 }

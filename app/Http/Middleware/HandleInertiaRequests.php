@@ -41,6 +41,10 @@ class HandleInertiaRequests extends Middleware
             ? auth()->user()
             : null,
 
+            'flash' => [
+                'presenceSuccess' => fn() => $request->session()->get('presenceSuccess')
+            ]
+
             
         ]);
     }

@@ -2,7 +2,9 @@
     <div class="w-full">
         <h1 class="text-4xl text-center my-10">Subjects</h1>
         
+           
         <div class="flex flex-wrap justify-evenly">
+            
             <div v-for="subject in subjects">
                 <Link :href="'/presence/' + subject.slug">
                     <the-card class="my-5">
@@ -20,8 +22,19 @@
                 </Link>
             </div>
         </div>
+
+        
+            <div class="absolute bottom-0 right-0  float-right">
+                <Transition>
+                <Toast v-if="$page.props.flash.presenceSuccess" :type="'success'" closable divide>
+                    {{ $page.props.flash.presenceSuccess }}
+                </Toast>
+                </Transition>
+            </div>
+        
         
     </div>
+    
 </template>
 
 <script>
@@ -35,10 +48,27 @@ export default {
 </script>
 
 <script setup>
-import { TheCard } from "flowbite-vue";
-import { onMounted } from 'vue';
+import { TheCard, Alert,  Toast } from "flowbite-vue";
+import { onMounted, Transition } from 'vue';
 import { initFlowbite } from 'flowbite';
 onMounted(() => {
     initFlowbite();
 })
 </script>
+
+<style>
+.v-enter-active,
+.v-leave-active {
+  
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-active {
+    transition-delay: 1s;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
