@@ -12,6 +12,7 @@
                         Login to your account
                     </h1>
                     <form class="space-y-4 md:space-y-6" @submit.prevent="login">
+                        <span v-show="form.errors">{{ form.errors }}</span>
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                 Email</label>

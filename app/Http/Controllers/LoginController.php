@@ -15,7 +15,6 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        dd($request);
     
         $rules = [
             'email' => 'required|email',
@@ -25,7 +24,7 @@ class LoginController extends Controller
         $validatedData = $request->validate($rules);
 
 
-        if (Auth::attempt()){
+        if (Auth::attempt($validatedData)){
             $request->session()->regenerate();
 
             return redirect()->intended('/home');
