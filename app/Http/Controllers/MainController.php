@@ -19,6 +19,7 @@ class MainController extends Controller
     public function index()
     {
         return Inertia::render('Home', [
+            'title' => 'e-Presence - Home',
             'subjects' => Subject::all(),
         ]);
     }
@@ -30,6 +31,7 @@ class MainController extends Controller
             $presenceFilled[] = $filled->appointment;
         }
         return Inertia::render('Presence', [
+            'title' => 'e-Presence - Presence',
             'subject' => $subject,
             'presenceFilled' => $presenceFilled,
         ]);

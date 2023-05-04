@@ -66,7 +66,9 @@ const form = reactive({
 })
 
 function fillPresence() {
-    router.post('/presence', form);
+    router.post('/presence', form, {
+        // preserveState: false,
+    });
 }
 
 

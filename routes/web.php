@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,5 @@ Route::get('/presence/{subject:slug}', [MainController::class, 'show']);
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
