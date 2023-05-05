@@ -33,9 +33,8 @@
     </div>
     <hr>
 
-    <div class="flex flex-wrap justify-around">
-        <span>aaa{{ presenceFilled['0'] }}</span>
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg my-5" v-for="subject in subjects">
+    <div class="flex flex-wrap justify-around flex-row gap-4">
+        <div class="basis-1/3 relative overflow-x-auto shadow-md sm:rounded-lg my-5" v-for="subject in subjects">
             <h4 class="text-center text-lg font-semibold">{{ subject.name }}</h4>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -56,7 +55,9 @@
                             {{ n }}
                         </th>
                         <td class="px-6 py-4 flex justify-center">
-                            <input type="checkbox" :checked="(subject.id == presenceFilled.subject_id) && (n == presenceFilled.appointment)">
+                            
+                            <input type="checkbox" :checked="(isPresent(subject.id,n))" disabled>
+                            
                         </td>
                     </tr>
                     
@@ -87,10 +88,51 @@ export default {
 </script>
 
 <script setup>
-import { onMounted } from 'vue';
+import { onMounted, defineProps } from 'vue';
 import { initFlowbite } from 'flowbite';
 onMounted(() => {
-    initFlowbite()
+    initFlowbite(),
+
+    props.presenceFilled[1].forEach(element => {
+        const presentIndicator = [];
+        presentIndicator.push(element.appointment)
+    });
+
+
+    
 })
+
+const props = defineProps(['subjects', 'presenceFilled']);
+
+
+
+
+
+
+
+
+
+
+const present = true;
+
+function isPresent(subjectId, n)
+{
+
+    const presentAppointment = [];
+    const presentSubject = []; 
+    props.presenceFilled[subjectId].forEach(element => {
+    
+    
+    presentAppointment.push(element.appointment);
+
+    
+    presentSubject.push(element.subject_id);
+    
+});
+
+    return presentAppointment.includes(n) && presentSubject.includes(subjectId);
+}
+
+// console.log(isPresent(1,1));
 
 </script>

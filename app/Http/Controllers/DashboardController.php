@@ -18,13 +18,13 @@ class DashboardController extends Controller
 
     public function index() 
     {    
-        $presences = Presence::where('user_id', auth()->user()->id)->get(['appointment', 'subject_id'])->groupBy('subject_id');
-        foreach ($presences as $presence) {
-            foreach ($presence as $x){
-                $presenceFilled[] =  $x;
-            }
+        $presenceFilled = Presence::where('user_id', auth()->user()->id)->get(['appointment', 'subject_id'])->groupBy('subject_id');
+        // foreach ($presences as $presence) {
+        //     foreach ($presence as $x){
+        //         $presenceFilled[] =  $x;
+        //     }
             
-        }
+        // }
         // print_r($presenceFilled);
         return Inertia::render('Dashboard', [
             'subjects' => Subject::all(),
