@@ -34,8 +34,8 @@
     <hr>
 
     <div class="flex flex-wrap justify-around flex-row gap-4">
-        <div class="basis-1/3 relative overflow-x-auto shadow-md sm:rounded-lg my-5" v-for="subject in subjects">
-            <h4 class="text-center text-lg font-semibold">{{ subject.name }}</h4>
+        <div class="relative  overflow-x-auto shadow-md sm:rounded-lg my-5" v-for="subject in subjects">
+            <h4 class="text-center text-lg font-semibold my-3">{{ subject.name }}</h4>
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -71,6 +71,8 @@
                     </tr> -->
                 </tbody>
             </table>
+
+            
         </div>
 
     </div>

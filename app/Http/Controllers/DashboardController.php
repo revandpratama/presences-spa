@@ -31,4 +31,11 @@ class DashboardController extends Controller
             'presenceFilled' => $presenceFilled
         ]);
     }
+
+    public function quiz() 
+    {
+        return Inertia::render('Quiz', [
+            
+        ]);
+    }
 }

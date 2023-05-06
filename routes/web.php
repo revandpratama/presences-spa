@@ -29,3 +29,4 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/quiz', [DashboardController::class, 'quiz']);

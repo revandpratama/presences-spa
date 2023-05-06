@@ -18,6 +18,7 @@ library.add(faUserSecret, faArrowLeft)
 
 
 
+
 createInertiaApp({
   resolve: name => {
     const pages = import.meta.glob('./Pages/**/*.vue', { eager: true })
@@ -29,5 +30,6 @@ createInertiaApp({
       .component('Link', Link)
       .component('font-awesome-icon', FontAwesomeIcon)
       .mount(el)
+      
   },
 })
